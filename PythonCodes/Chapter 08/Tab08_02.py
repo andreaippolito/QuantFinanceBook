@@ -124,7 +124,7 @@ def ChFHestonModel(r,tau,kappa,gamma,vbar,v0,rho):
     i = np.complex(0.0,1.0)
     D1 = lambda u: np.sqrt(np.power(kappa-gamma*rho*i*u,2)+(u*u+i*u)*gamma*gamma)
     g  = lambda u: (kappa-gamma*rho*i*u-D1(u))/(kappa-gamma*rho*i*u+D1(u))
-    C  = lambda u: (1.0-np.exp(-D1(u)*tau))/(gamma*gamma*(1.0-g(u)*D1(u)*tau)) \
+    C  = lambda u: (1.0-np.exp(-D1(u)*tau))/(gamma*gamma*(1.0-g(u)*np.exp(-D1(u)*tau))) \
         *(kappa-gamma*rho*i*u-D1(u))
 
     # Note that we exclude the term -r*tau, as the discounting is performed in the COS method
